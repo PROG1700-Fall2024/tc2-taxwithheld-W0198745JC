@@ -12,8 +12,32 @@
 
 def main():
     # YOUR CODE STARTS HERE, each line must be indented (one tab)
+    print("Tax Witholding Calculator")
+#define tax amounts
+    provincialTax=.06
+    federalTax=.25
+    dependentTax=.02
 
+#input 
+    weeklySalary= float(input("Please enter the amount of your weekly Salary:"))
+    dependents= int(input("How Many Dependents do you have?:"))
 
+    provincialWithheld=weeklySalary*provincialTax
+    FederalWithheld=weeklySalary*federalTax
+    
+    if dependents >0:
+        dependentDeduction=(dependents*dependentTax)* weeklySalary
+    else:
+        dependentDeduction= 0
+
+    takeHomePay=(weeklySalary-provincialWithheld)-FederalWithheld+dependentDeduction
+    totalWithheld=provincialWithheld+FederalWithheld-dependentDeduction
+
+    print ("Provincial Tax Withheld: ${0:.2f}".format(provincialWithheld))
+    print ("Federal Tax Withheld:${0:.2f}".format(FederalWithheld))
+    print ("Dependent Deduction for {0} dependents: ${1:.2f}".format(dependents,dependentDeduction))
+    print ("Total Withheld: ${0:.2f}".format(totalWithheld))
+    print ("Total Take Home: ${0:.2f}".format(takeHomePay))
 
 
 
